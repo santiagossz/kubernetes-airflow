@@ -1,6 +1,6 @@
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
-name: spark-warehouse-cluster
+name: airflow-cluster
 containerdConfigPatches:
 - |-
   [plugins."io.containerd.grpc.v1.cri".registry.mirrors."localhost:${reg_port}"]
@@ -21,10 +21,3 @@ nodes:
     nodeRegistration:
       kubeletExtraArgs:
         node-labels: "node=worker_2"
-- role: worker
-  kubeadmConfigPatches:
-  - |
-    kind: JoinConfiguration
-    nodeRegistration:
-      kubeletExtraArgs:
-        node-labels: "node=worker_3"
