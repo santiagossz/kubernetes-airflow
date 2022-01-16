@@ -16,7 +16,7 @@ with DAG(dag_id='ks8_etl', schedule_interval='0 0 * * *', default_args=default_a
     ks8_load_data = KubernetesPodOperator(
                           image="amancevice/pandas",
                           cmds=["python","-c"],
-                          arguments=["pd.read_csv('https://ifood-data-architect-test-source.s3-sa-east-1.amazonaws.com/consumer.csv.gz').to_csv('/opt/airflow/dags/data/consumer.csv',index=False)"],
+                          arguments=["pd.read_csv('https://ifood-data-architect-test-source.s3-sa-east-1.amazonaws.com/consumer.csv.gz').to_csv('consumer.csv',index=False)"],
                           task_id="ks8_load_data",
                           )
 
@@ -24,7 +24,7 @@ with DAG(dag_id='ks8_etl', schedule_interval='0 0 * * *', default_args=default_a
     ks8_read_data = KubernetesPodOperator(
                           image="python:3.8",
                           cmds=["python","-c"],
-                          arguments=["print(pd.read_csv('/opt/airflow/dags/data/consumer.csv'))"],
+                          arguments=["print(pd.read_csv('consumer.csv'))"],
                           task_id="ks8_read_data",
                           )
 

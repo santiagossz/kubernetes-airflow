@@ -13,11 +13,11 @@ default_args = {
 }
 
 def _load_data():
-    pd.read_csv('https://ifood-data-architect-test-source.s3-sa-east-1.amazonaws.com/consumer.csv.gz').to_csv('/opt/airflow/dags/data/consumer.csv',index=False)
+    pd.read_csv('https://ifood-data-architect-test-source.s3-sa-east-1.amazonaws.com/consumer.csv.gz').to_csv('consumer.csv',index=False)
     print('Successfull download and storage of file') 
 
 def _read_data():
-    df=pd.read_csv('/opt/airflow/dags/data/consumer.csv')
+    df=pd.read_csv('consumer.csv')
     print(df) 
 
 with DAG(dag_id='etl', schedule_interval='0 0 * * *', default_args=default_args, catchup=False) as dag:
