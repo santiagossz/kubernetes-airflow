@@ -35,4 +35,4 @@ forward the port to have Airflow UI
 
 Trigger the KubernetesPodOperator data pipeline dag to complete the etl process
 
-![Trigger ks8_dag](/../Screen Shot 2022-01-17 at 1.01.32 PM.png)
+![Trigger ks8_dag](/../dag.png)
