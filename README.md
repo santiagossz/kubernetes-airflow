@@ -24,15 +24,14 @@ airflow docker image w/ kubernetespod operator provider, and pandas
 **values_ssh.yaml** have all the helm chart values, connection to docker airflow image && pods to run airflow with KubernetesExecutor 
  helm chart airflow install inside Kubernetes cluster
  
- `helm repo add apache-airflow https://airflow.apache.org
- helm install airflow apache-airflow/airflow -n airflow -f config/ks8_values.yaml --debug `
+ `helm repo add apache-airflow https://airflow.apache.org`
+
+ `helm install airflow apache-airflow/airflow -n airflow -f config/ks8_values.yaml --debug `
 
 forward the port to have Airflow UI
 
 `kubectl port-forward svc/airflow-webserver 8080:8080 -n airflow`
 
 
+Trigger the ks8_etl dag to complete the etl process
 
-## KubernetesPod Operator
-
-in the kubpod.py is the file that runs the task inside KubernetesExecutor
