@@ -33,5 +33,6 @@ forward the port to have Airflow UI
 `kubectl port-forward svc/airflow-webserver 8080:8080 -n airflow`
 
 
-Trigger the ks8_etl dag to complete the etl process
+Trigger the KubernetesPodOperator data pipeline dag to complete the etl process
 
+![Trigger ks8_dag](../Screen Shot 2022-01-17 at 1.01.32 PM.png)
