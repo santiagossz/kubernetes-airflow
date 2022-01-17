@@ -18,6 +18,7 @@ with DAG(dag_id='ks8_etl', schedule_interval='0 0 * * *', default_args=default_a
                           cmds=["python","-c"],
                           arguments=["pd.read_csv('https://ifood-data-architect-test-source.s3-sa-east-1.amazonaws.com/consumer.csv.gz').to_csv('consumer.csv',index=False)"],
                           task_id="ks8_load_data",
+                          name="ks8_load_data"
                           )
 
 
@@ -26,6 +27,7 @@ with DAG(dag_id='ks8_etl', schedule_interval='0 0 * * *', default_args=default_a
                           cmds=["python","-c"],
                           arguments=["print(pd.read_csv('consumer.csv'))"],
                           task_id="ks8_read_data",
+                          name="ks8_read_data"
                           )
 
 

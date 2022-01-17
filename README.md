@@ -11,7 +11,7 @@ in a Kubernetes Executor to download/store a file and read/print its results
 
 create a Kubernetes cluster with kind
 
-`kind create cluster --config kind-config.yaml`
+`kind create cluster --config config/kind-config.yaml`
 
 create namespace to have all airflow resources 
 
@@ -19,13 +19,13 @@ create namespace to have all airflow resources
 
 airflow docker image w/ kubernetespod operator provider, and pandas
 
-`santiagossz/ifood:api` 
+`santiagossz/ifood:airflow_dags` 
 
 **values_ssh.yaml** have all the helm chart values, connection to docker airflow image && pods to run airflow with KubernetesExecutor 
  helm chart airflow install inside Kubernetes cluster
  
  `helm repo add apache-airflow https://airflow.apache.org
- helm install airflow apache-airflow/airflow -n airflow -f values_ssh.yaml --debug `
+ helm install airflow apache-airflow/airflow -n airflow -f config/ks8_values.yaml --debug `
 
 forward the port to have Airflow UI
 
